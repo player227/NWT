@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&family=Roboto&family=Train+One&display=swap');
+
+.playScoreUsernameContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+/*---------PLAY BUTTON--------*/
+#playButton {
+    font-family: 'Train One', cursive;
+    font-size: 4vh;
+    color: rgb(226, 21, 21);
+    padding: 1vh 2vw 1vh 2vw;
+    margin: 1vh 0 1vh 0;
+    background-color: rgb(43, 168, 177);
+    border-radius: 2vh;
+    border: 3px solid darkblue;
+    align-self: center;
+}
+
+#playButton:hover {
+    animation: shake 1s infinite;
+    color: rgb(43, 168, 177);
+    background-color: rgb(226, 21, 21);
+    cursor: default;
+}
+
+@keyframes shake {
+
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    5% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    10% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    15% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    20% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    25% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    30% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    35% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    40% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    45% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    50% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}
+
+/*---------SCORE--------*/
+#score {
+    align-self: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 3vh;
+    color: rgb(21, 52, 226);
+    padding: 1vh 2vw 1vh 2vw;
+    margin: 0.75vw 0 0.75vw 0;
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 2vh;
+    border: 3px solid darkblue;
+}
+
+#username {
+    font-family: 'Roboto', sans-serif;
+    font-size: 3vh;
+    text-align: center;
+    color: rgb(21, 52, 226);
+    padding: 1vh 1vw 1vh 1vw;
+    margin: 1vh 0 1vh 0;
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 2vh;
+    border: 3px solid darkblue;
+}
+
+#score:hover {
+    cursor: default;
+}
+
+@media screen and (max-width: 300px) {
+    #username {
+        width: 180px;
+    }
+}
