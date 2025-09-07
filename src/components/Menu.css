@@ -1,15 +1,118 @@
 /*---------MENU--------*/
 .menu {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
     margin: 0.5vh 0 0.5vh 0;
     padding: 1.5vh 3vw 1.5vh 3vw;
     font-family: 'Roboto', sans-serif;
+    position: relative;
 }
 
-@media screen and (max-width: 270px) {
+.menu-bubble {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 16px;
+    left: -24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #2563eb;
+    color: #fff;
+    font-size: 2rem;
+    border: none;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.18);
+    z-index: 1001;
+    cursor: pointer;
+    transition: background 0.2s;
+    line-height: 1;      
+    padding: 0;            
+    text-align: center;  
+}
+
+.menu-links {
+    display: flex;
+    gap: 16px;
+}
+
+@media (max-width: 600px) {
     .menu {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 0;
+        margin: 0;
+        background: none;
+        position: relative;
+        width: 100%;
     }
+    .menu-bubble {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute; /* Changed from fixed */
+        top: -60px;
+        left: 5px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: #2563eb;
+        color: #fff;
+        font-size: 2rem;
+        border: none;
+        box-shadow: 0 2px 8px rgba(37,99,235,0.18);
+        z-index: 1001;
+        cursor: pointer;
+        transition: background 0.2s;
+        line-height: 1;         
+        padding: 0;       
+        text-align: center; 
+    }
+    .menu-bubble:active,
+    .menu-bubble:focus {
+        background: #1e40af;
+    }
+    .menu-links {
+        display: none;
+        flex-direction: column;
+        position: absolute; /* Changed from fixed */
+        top: 16px;
+        left: 36px; /* Just to the right of the bubble */
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 16px rgba(37,99,235,0.12);
+        padding: 16px 12px;
+        z-index: 1000;
+        gap: 12px;
+        min-width: 140px;
+    }
+    .menu.open .menu-links {
+        display: flex;
+        animation: fadeInMenu 0.2s;
+    }
+    .menu-links .button {
+        width: 100%;
+        justify-content: flex-start;
+        font-size: 1.1rem;
+        padding: 10px 0;
+        background: none;
+        color: #2563eb;
+        border: none;
+        box-shadow: none;
+        text-align: left;
+    }
+    .menu-links .button.active,
+    .menu-links .button:hover {
+        background: #2563eb;
+        color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+    }
+}
+
+@keyframes fadeInMenu {
+    from { opacity: 0; transform: translateX(-10px);}
+    to { opacity: 1; transform: translateX(0);}
 }

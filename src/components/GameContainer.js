@@ -6,9 +6,10 @@ import { sendScore } from "./DBcomms"
 function GameContainer() {
     const score = useRef(0);
     const [level, setLevel] = useState(1);
-    const [playBtnOrBoard, setPlayBtnOrBoard] = useState(true); // playBtn - true : board - false
+    const [playBtnOrBoard, setPlayBtnOrBoard] = useState(true);
     const username = useRef("");
     const [playButtonText, setPlayButtonText] = useState("PLAY");
+    const [usernameError, setUsernameError] = useState(false); // NEW
 
     //update username from playscoreusername
     function getUsername(_username) {
@@ -17,11 +18,13 @@ function GameContainer() {
 
     //play button clicked from playscoreusername
     function playBtnClick(_username) {
-        console.log("Username: " + _username);
+        console.log("ALDO Play button clicked with username:", _username);
         if (_username === "" || _username === null) {
-            alert("Enter username!");
+            setUsernameError(true); // NEW
+            setPlayBtnOrBoard(true);
         }
         else {
+            setUsernameError(false); // NEW
             setPlayBtnOrBoard(false);
         }
     }
@@ -52,13 +55,20 @@ function GameContainer() {
         setPlayButtonText("GAME OVER");
         setTimeout(() => {
             setPlayButtonText("PLAY AGAIN");
-        }, 3000);
+        }, 2500);
     }
 
     return (
         <div className="content">
             {playBtnOrBoard ?
-                <PlayScoreUsername playBtnText={playButtonText} score={score.current} username={username.current} getUsername={getUsername} playBtnClick={playBtnClick} />
+                <PlayScoreUsername
+                    playBtnText={playButtonText}
+                    score={score.current}
+                    username={username.current}
+                    getUsername={getUsername}
+                    playBtnClick={playBtnClick}
+                    usernameError={usernameError} // NEW
+                />
                 : <Board level={level} win={win} gameOver={gameOver} />}
         </div>
     )

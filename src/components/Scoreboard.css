@@ -8,25 +8,38 @@ ul {
 }
 
 /*---------SCORE---------*/
+.scoreList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
 .score {
-    font-size: 3vh;
-    text-align: center;
-    padding: 1vh 1.5vw 1vh 1.5vw;
-    margin: 0.5vh 0.5vw 0.5vh 0.5vw;
-    background-color: rgba(255, 255, 255, 0.74);
-    border-radius: 2vh;
+  background: #e0e7ef;
+  margin-bottom: 10px;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #222;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  transition: background 0.2s;
 }
 
-.first {
-    border: 5px solid gold
+.score.first {
+  background: #facc15;
+  color: #fff;
 }
 
-.second {
-    border: 5px solid silver
+.score.second {
+  background: #a3e635;
+  color: #222;
 }
 
-.third {
-    border: 5px solid #CD7F32
+.score.third {
+  background: #38bdf8;
+  color: #fff;
 }
 
 @media screen and (max-height: 690px) {

@@ -1,27 +1,54 @@
 /*---------BUTTON--------*/
 .button {
-    font-size: 3vh;
-    padding: 1vh 1.5vw 1vh 1.5vw;
-    margin: 1vh 1vw 1vh 1vw;
-    background-color: rgba(90, 139, 75, 0.562);
-    border-radius: 2vh;
-    color: #0060B6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    padding: 1.1em 2.2em;
+    margin: 1em 1.2em;
+    background: linear-gradient(135deg, #fffb00 0%, #ff61e6 100%);
+    border-radius: 2em 0.5em 2em 0.5em / 0.5em 2em 0.5em 2em;
+    color: #fff;
     text-decoration: none;
+    border: 3px dashed #00e0ff;
+    box-shadow: 0 0 0 4px #fffb00, 0 6px 24px 0 rgba(255, 97, 230, 0.25);
+    font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+    letter-spacing: 2px;
+    transform: rotate(-2deg) skew(-2deg, 1deg);
+    transition: 
+        background 0.3s,
+        color 0.2s,
+        border-radius 0.3s,
+        transform 0.2s,
+        box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
 }
 
 .button:hover {
-    background-color: rgba(255, 106, 106, 0.5);
+    color: #00e0ff;
+    border-radius: 0.5em 2em 0.5em 2em / 2em 0.5em 2em 0.5em;
+    transform: rotate(3deg) scale(1.08) skew(2deg, -1deg);
+    box-shadow: 0 0 0 8px #ff61e6, 0 12px 36px 0 rgba(255, 30, 0, 0.18);
+}
+
+.button.active {
+    color: #ff61e6;
+    border-radius: 0.5em 2em 0.5em 2em / 2em 0.5em 2em 0.5em;
+    transform: rotate(3deg) scale(1.08) skew(2deg, -1deg);
+    box-shadow: 0 0 0 8px #ff61e6, 0 12px 36px 0 rgba(255, 30, 0, 0.18);
 }
 
 @media screen and (max-width: 400px) {
     .button {
-        font-size: inherit;
+        font-size: 1.1rem;
+        padding: 0.7em 1.1em;
     }
 }
 
 @media screen and (max-width: 270px) {
     .button {
-        margin: 2px 2px 2px 2px;
-        padding: 2px 2px 2px 2px;
+        margin: 2px;
+        padding: 2px 4px;
     }
 }

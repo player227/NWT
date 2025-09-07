@@ -19,8 +19,8 @@ export default function Scoreboard() {
         async function getData() {
             try {
                 const scores = await getScores();
-                const elements = scores.data.map((item) => item.Name + " " + item.Score);
-                setData(elements);
+                // Use the dummyScores data directly
+                setData(scores.data);
             } catch (err) {
                 console.log(err);
             }
@@ -31,9 +31,9 @@ export default function Scoreboard() {
     return (
         <div className='content'>
             <ul className='scoreList'>
-                {data.map((value, key) => (
+                {data.map((item, key) => (
                     <li className={scoreClasses(key)} key={key}>
-                        {value}
+                        {item.Name} {item.Score}
                     </li>
                 ))}
             </ul>
