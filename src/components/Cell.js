@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import './Cell.css';
 import bombSvg from '../images/Bomb.svg'
 
@@ -6,38 +6,28 @@ import bombSvg from '../images/Bomb.svg'
     cell is used to show bomb and get clicked cell index
 */
 function Cell(props) {
-    const img = useRef(
-        (props.isBomb) ? `url(${bombSvg})` : `url(none)`);
+    const [showBomb, setShowBomb] = useState(props.isBomb);
 
-    const [forceRender, setForceRender] = useState(false);
-    const displayTimer = useRef(props.displayTime);
-    const isBomb = useRef(props.isBomb);
-    const showTimeout = useRef(0);
+    // Hide bomb after displayTime
+    useEffect(() => {
+        if (props.isBomb) {
+            const timer = setTimeout(() => setShowBomb(false), props.displayTime * 1000);
+            return () => clearTimeout(timer);
+        }
+    }, [props.isBomb, props.displayTime]);
 
-    //if bomb is clicked it is no longer a bomb
-    function clickedMe() {
-        img.current = null;
-        isBomb.current = false;
-        clearTimeout(showTimeout.current);
-        setForceRender(f => !f);
+    function handleClick() {
+        if (showBomb) setShowBomb(false); // Hide bomb immediately
+        props.clickedIndex(props.index, props.isBomb);
     }
 
-    //when bomb is created it needs to show itself for some time
-    useEffect(() => {
-        if (isBomb.current) {
-            showTimeout.current = setTimeout(() => {
-                img.current = null;
-                setForceRender(f => !f);
-            }, displayTimer.current * 1000);
-        }
-    }, [])
-
     return (
-        <div className="cell" onClick={() => {
-            props.clickedIndex(props.index, isBomb.current);
-            clickedMe();
-        }} style={{ backgroundImage: img.current }}></div>
-    )
+        <div
+            className="cell"
+            onClick={handleClick}
+            style={{ backgroundImage: showBomb ? `url(${bombSvg})` : "none" }}
+        />
+    );
 }
 
 export default Cell;

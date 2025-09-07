@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react"
 import Board from "./Board"
 import PlayScoreUsername from "./PlayScoreUsername"
 import { sendScore } from "./DBcomms"
+import { useNavigate } from "react-router-dom" // <-- Add this
 
 function GameContainer() {
     const score = useRef(0);
@@ -10,6 +11,7 @@ function GameContainer() {
     const username = useRef("");
     const [playButtonText, setPlayButtonText] = useState("PLAY");
     const [usernameError, setUsernameError] = useState(false);
+    const navigate = useNavigate(); // <-- Add this
 
     //update username from playscoreusername
     function getUsername(_username) {
@@ -43,20 +45,14 @@ function GameContainer() {
 
     //game over - reset level by switching gameOver value
     function gameOver(_score) {
-        //show play button, score and username
         setPlayBtnOrBoard(true);
-        //increase score
         score.current += _score;
-        //reset level
         setLevel(1);
-        //send score to database
         sendScore(username.current, score.current);
-        //set play button text
         setPlayButtonText("GAME OVER");
-        score.current = 0;
         setTimeout(() => {
-            setPlayButtonText("PLAY AGAIN");
-        }, 2500);
+            navigate("/leaderboard");
+        }, 1000);
     }
 
     return (
