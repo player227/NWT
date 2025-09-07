@@ -31,10 +31,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 3vw auto 3vw auto;
 }
 
 @media screen and (max-width: 550px) {
   .content {
     flex-direction: column;
+    margin: 0;
   }
 }

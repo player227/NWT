@@ -9,7 +9,7 @@ function GameContainer() {
     const [playBtnOrBoard, setPlayBtnOrBoard] = useState(true);
     const username = useRef("");
     const [playButtonText, setPlayButtonText] = useState("PLAY");
-    const [usernameError, setUsernameError] = useState(false); // NEW
+    const [usernameError, setUsernameError] = useState(false);
 
     //update username from playscoreusername
     function getUsername(_username) {
@@ -20,11 +20,11 @@ function GameContainer() {
     function playBtnClick(_username) {
         console.log("ALDO Play button clicked with username:", _username);
         if (_username === "" || _username === null) {
-            setUsernameError(true); // NEW
+            setUsernameError(true);
             setPlayBtnOrBoard(true);
         }
         else {
-            setUsernameError(false); // NEW
+            setUsernameError(false);
             setPlayBtnOrBoard(false);
         }
     }
@@ -53,6 +53,7 @@ function GameContainer() {
         sendScore(username.current, score.current);
         //set play button text
         setPlayButtonText("GAME OVER");
+        score.current = 0;
         setTimeout(() => {
             setPlayButtonText("PLAY AGAIN");
         }, 2500);
@@ -67,7 +68,7 @@ function GameContainer() {
                     username={username.current}
                     getUsername={getUsername}
                     playBtnClick={playBtnClick}
-                    usernameError={usernameError} // NEW
+                    usernameError={usernameError}
                 />
                 : <Board level={level} win={win} gameOver={gameOver} />}
         </div>
