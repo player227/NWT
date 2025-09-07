@@ -4,7 +4,7 @@ import './App.css';
 import Title from './components/Title'
 import Menu from './components/Menu'
 import HowToPlay from './components/HowToPlay';
-import Scoreboard from './components/Scoreboard';
+import Leaderboard from './components/Leaderboard';
 import { Route, Routes } from 'react-router-dom'
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<GameContainer />} />
         <Route path="/howto" element={<HowToPlay />} />
-        <Route path="/scoreboard" element={<Scoreboard />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
       </Routes>
     </div>
   );

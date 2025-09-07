@@ -3,6 +3,8 @@
 .playScoreUsernameContainer {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 1vh; 
 }
 
 /*---------PLAY BUTTON--------*/
@@ -69,18 +71,27 @@
 #score {
     align-self: center;
     font-family: 'Roboto', sans-serif;
-    font-size: 3vh;
+    font-size: 2vh;
     color: rgb(21, 52, 226);
     padding: 1vh 2vw 1vh 2vw;
     margin: 0.75vw 0 0.75vw 0;
     background: rgba(255, 255, 255, 0.45);
     border-radius: 2vh;
     border: 3px solid darkblue;
+    min-width: 180px;
+    box-sizing: border-box;
+    text-align: center;
 }
+
+#score:hover {
+    cursor: default;
+}
+
+/*---------USERNAME INPUT--------*/
 
 #username {
     font-family: 'Roboto', sans-serif;
-    font-size: 3vh;
+    font-size: 2vh;
     text-align: center;
     color: rgb(21, 52, 226);
     padding: 1vh 1vw 1vh 1vw;
@@ -88,10 +99,10 @@
     background: rgba(255, 255, 255, 0.45);
     border-radius: 2vh;
     border: 3px solid darkblue;
-}
-
-#score:hover {
-    cursor: default;
+    min-width: 180px;
+    max-width: 220px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .input-error {

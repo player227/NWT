@@ -20,6 +20,14 @@ export default function Menu() {
                 >
                     {open ? "✕" : "☰"}
                 </button>
+                {/* Overlay for mobile, only visible when menu is open */}
+                {open && (
+                    <div
+                        className="menu-overlay"
+                        onClick={() => setOpen(false)}
+                        aria-hidden="true"
+                    />
+                )}
                 <div className={`menu-links${open ? " show" : ""}`}>
                     <NavLink
                         to="/howto"
@@ -39,12 +47,12 @@ export default function Menu() {
                         Play
                     </NavLink>
                     <NavLink
-                        to="/scoreboard"
-                        id="scoreboard"
+                        to="/leaderboard"
+                        id="leaderboard"
                         className={({ isActive }) => isActive ? "button active" : "button"}
                         onClick={handleNav}
                     >
-                        Scoreboard
+                        Leaderboard
                     </NavLink>
                 </div>
             </nav>

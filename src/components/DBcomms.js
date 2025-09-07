@@ -69,13 +69,13 @@
 //         .catch(err => console.error(err));
 // }
 
-// In-memory dummy data for scoreboard
+// In-memory dummy data for Leaderboard
 let dummyScores = [
-  { Name: "Alice", Score: 120 },
-  { Name: "Bob", Score: 110 },
-  { Name: "Charlie", Score: 95 },
-  { Name: "Dana", Score: 80 },
-  { Name: "Eve", Score: 70 }
+  { Name: "Alice", Score: 2320 },
+  { Name: "Bob", Score: 1911 },
+  { Name: "Charlie", Score: 1560 },
+  { Name: "Dana", Score: 1080 },
+  { Name: "Ant", Score: 20 }
 ];
 
 // Simulate fetching all scores (GET)
@@ -95,11 +95,10 @@ export function addScore(newScore) {
   return new Promise((resolve) => {
     setTimeout(() => {
       dummyScores.push(newScore);
-      
-      // trim to top 5
-      if (dummyScores.length > 5) {
-        dummyScores.sort((a, b) => b.Score - a.Score);
-        dummyScores = dummyScores.slice(0, 5);
+      dummyScores.sort((a, b) => b.Score - a.Score);
+      // trim to top 7 scores
+      if (dummyScores.length > 7) {
+        dummyScores = dummyScores.slice(0, 7);
       }
 
       console.log(dummyScores);
